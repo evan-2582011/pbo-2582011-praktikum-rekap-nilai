@@ -25,9 +25,31 @@ public class RekapNilai {
                 System.out.println("  ditolak — nilai harus 0..100");
                 continue; // lewati sisa loop, jumlahSah tidak naik
             }
+            // Percobaan dibalik: dengan "nilai >= 60" di paling atas, nilai 85 jadi grade D
+            // karena 85 >= 60 sudah benar di cabang pertama, jadi cabang lain tidak dicek lagi.
+            char grade;
+            if (nilai >= 90) {
+                grade = 'A';
+            } else if (nilai >= 80) {
+                grade = 'B';
+            } else if (nilai >= 70) {
+                grade = 'C';
+            } else if (nilai >= 60) {
+                grade = 'D';
+            } else {
+                grade = 'E';
+            }
 
+            String keterangan = switch (grade) {
+                case 'A' -> "Sangat Baik";
+                case 'B' -> "Baik";
+                case 'C' -> "Cukup";
+                case 'D' -> "Kurang";
+                default -> "Tidak Lulus";
+            };
+
+            System.out.println("  Grade " + grade + " — " + keterangan);
             jumlahSah++;
         } while (nilai != SELESAI);
     }
 }
-
