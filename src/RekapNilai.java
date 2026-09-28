@@ -17,9 +17,16 @@ public class RekapNilai {
             System.out.print("Nilai ke-" + (jumlahSah + 1) + " : ");
             nilai = sc.nextInt();
 
-            if (nilai != SELESAI) {
-                jumlahSah++;
+            if (nilai == SELESAI) {
+                break;
             }
+
+            if (nilai < 0 || nilai > 100) {
+                System.out.println("  ditolak — nilai harus 0..100");
+                continue; // lewati sisa loop, jumlahSah tidak naik
+            }
+
+            jumlahSah++;
         } while (nilai != SELESAI);
     }
 }
